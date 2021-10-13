@@ -1,7 +1,9 @@
+import java.util.Scanner;
+
 public class EmployeeService {
 
     int employeesCounter = 0;
-    final int numberOfEmployees = 3; //максимальное количество рабочих мест в компании
+    final int numberOfEmployees = 4; //максимальное количество рабочих мест в компании
     Employee[] employees = new Employee[numberOfEmployees];
     String[] names = new String[numberOfEmployees];
     String[] genders = new String[numberOfEmployees];
@@ -39,7 +41,6 @@ public class EmployeeService {
     }
 
     void addingToDatabase(Employee employee) {
-
         employees[0 + employeesCounter] = employee;
         names[0 + employeesCounter] = employee.name;
         age[0 + employeesCounter] = employee.age;
@@ -56,15 +57,14 @@ public class EmployeeService {
         boolean isMatch = false;
         for (int i = 0; i < iDs.length; i++) {
             if (iDs[i] == iD) {
-                System.out.println("================================= WARNING: SEARCHING by ID:" + iD + "  ====================================================================");
+                System.out.println("================================= WARNING: SEARCHING by ID: " + iD + "  ====================================================================");
                 printEmployee(employees[i]);
                 isMatch = true;
-
             }
         }
-        if(!isMatch){
-            System.out.println("================================= WARNING: SEARCHING by ID:" + iD + "  ====================================================================");
-            System.out.println("blah blah we have no this data");
+        if (!isMatch) {
+            System.out.println("================================= WARNING: SEARCHING by ID: " + iD + "  ====================================================================");
+            System.out.println("OOOOOOOPS! we have no ID " + iD + " in our data base");
         }
     }
 
@@ -75,17 +75,12 @@ public class EmployeeService {
                 System.out.println("================================= WARNING: SEARCHING by NAME: " + name + "  ===============================================================");
                 printEmployee(employees[i]);
                 isMatch = true;
-
             }
-
         }
-
-        if(!isMatch){
+        if (!isMatch) {
             System.out.println("================================= WARNING: SEARCHING by NAME: " + name + "  ===============================================================");
-            System.out.println("OOOOOOOPS! we have no this data");
+            System.out.println("OOOOOOOPS! we have no name " + name + " in our data base");
         }
-
-
     }
 
     double calculateSalaryAndBonus() {
@@ -95,7 +90,53 @@ public class EmployeeService {
         }
         System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++TOTAL SALARY AMOUNT IS: " + companyTotalSalaryAmount + " $ ++++++++++++++++++++++++++++++++++++++");
         return companyTotalSalaryAmount;
-
     }
+
+     void userInterface() {
+         System.out.println();
+         System.out.println();
+         System.out.println("==============================PRESS THE NUMBERS ON KEYBOARD TO FOLLOW THE COMMANDS===============================================");
+         System.out.println("=====1 to HIRE  =====2 to PRINT info   =====3 to print all DATABASE  =====4 to CALCULATE TOTAL SALARY  =====5 to search by NAME  ");
+         System.out.println("=====6 to search by ID    =====7 to        =====8 to        =====9 to      =====0 to EXIT program ===============================");
+         Scanner scanner = new Scanner(System.in);
+         int numberFromUser = scanner.nextInt();
+                switch (numberFromUser) {
+                    case 1:
+//                       addingToDatabase(пока хз как это );
+                        userInterface();
+                        break;
+                    case 2:
+//                        printEmployee(пока хз как это);
+                        userInterface();
+                        break;
+                    case 3:
+                        printEmployeesBase();
+                        userInterface();
+                        break;
+                    case 4:
+                        calculateSalaryAndBonus();
+                        userInterface();
+                        break;
+                    case 5:    // НЕ СЧИТЫВАЕТ СТРОЧКУ
+//                        String name = scanner.nextLine();
+//                        System.out.println(ANSI_GREEN + "Enter the name and press ENTER to search");
+//                        getByName(name);
+//                        UserInterface();
+//                        break;
+                    case 6:
+                        System.out.println("Enter the ID number and press ENTER to search");
+                        int id = scanner.nextInt();
+                        getById(id);
+                        userInterface();
+                        break;
+                    case 0:   //EXIT
+                        break;
+                    default:
+                        userInterface();
+
+                }
+
+
+         }
 
 }

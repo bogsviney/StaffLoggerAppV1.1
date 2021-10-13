@@ -1,5 +1,5 @@
 public class Employee {
-
+    String ANSI_GREEN = "\u001B[32m";
     long id;
     String name;
     int age;
@@ -9,11 +9,11 @@ public class Employee {
     double defaultBugRate;
 
     Employee(){
-        System.out.println("================================= WARNING: EMPLOYEE construction is started! ===========================================");
+        System.out.println(ANSI_GREEN +"================================= WARNING: EMPLOYEE spawning is started! ===========================================");
     }
 
     Employee(int id, String name, int age, double salary, int fixedBugs, double defaultBugRate, String gender) {
-        System.out.println("================================= WARNING: EMPLOYEE construction is started! ===========================================");
+        System.out.println(ANSI_GREEN +"================================= WARNING: EMPLOYEE spawning is started! ===========================================");
         this.id = id;
         this.name = name;
         this.age = age;
