@@ -89,10 +89,4 @@ public class Test {
         service.printEmployeesBase();
     }
 
-
-//    void testEditEmployeeParameters(){
-//        service.edit(grishaWorker);
-//
-//    }
-
 }

@@ -34,25 +34,6 @@ public class EmployeeFactory {
     private final static int SALARY_LOWER_BOUND = 700;
     private final static int SALARY_UPPER_BOUND = 1000;
 
-//    Employee getRandomEmployee() {
-//        Random random = new Random();
-//        Employee randomEmployee = new Employee();
-//        randomEmployee.setId(0 + 1);
-//        randomEmployee.setAge(random.nextInt(AGE_UPPER_BOUND) + AGE_LOWER_BOUND);
-//        randomEmployee.setSalary(new BigDecimal(random.nextDouble() * SALARY_UPPER_BOUND + SALARY_LOWER_BOUND).setScale(2, RoundingMode.HALF_UP).doubleValue());
-//        randomEmployee.setFixedBugs(random.nextInt(500) + 1);
-//        randomEmployee.setDefaultBugRate(new BigDecimal(random.nextDouble() * 1 + 25).setScale(2, RoundingMode.HALF_UP).doubleValue());
-//        randomEmployee.setGender(GENDER[random.nextInt(GENDER.length)]);
-//        if (randomEmployee.getGender() == "MALE") {
-//            randomEmployee.setName(MALE_NAMES[random.nextInt(MALE_NAMES.length)]);
-//        } else {
-//            randomEmployee.setName(FEMALE_NAMES[random.nextInt(FEMALE_NAMES.length)]);
-//        }
-////            randomEmployees[i] = randomEmployee;
-//
-//        return randomEmployee;
-//    }
-
     Employee[] getRandomEmployees(int size) {
         Random random = new Random();
         Employee[] randomEmployees = new Employee[size];

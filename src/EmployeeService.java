@@ -158,7 +158,7 @@ public class EmployeeService {
     }
 
     //just for fun ^^
-    void userInterface() {
+    void consoleUserInterface() {
         System.out.println();
         System.out.println();
         System.out.println("==============================PRESS THE NUMBERS ON KEYBOARD TO FOLLOW THE COMMANDS===============================================");
@@ -169,19 +169,19 @@ public class EmployeeService {
         switch (numberFromUser) {
             case 1:
 //                       addingToDatabase(пока хз как это );
-                userInterface();
+                consoleUserInterface();
                 break;
             case 2:
 //                        printEmployee(пока хз как это);
-                userInterface();
+                consoleUserInterface();
                 break;
             case 3:
                 printEmployeesBase();
-                userInterface();
+                consoleUserInterface();
                 break;
             case 4:
                 calculateSalaryAndBonus();
-                userInterface();
+                consoleUserInterface();
                 break;
             case 5:    // НЕ СЧИТЫВАЕТ СТРОЧКУ
 //                        String name = scanner.nextLine();
@@ -193,27 +193,27 @@ public class EmployeeService {
                 System.out.println("Enter the ID number and press ENTER to search");
                 long id = scanner.nextInt();
                 getById(id);
-                userInterface();
+                consoleUserInterface();
                 break;
             case 7:
                 System.out.println("Enter the ID number to delete from database");
                 id = scanner.nextLong();
                 System.out.println("Worker with ID " + id + " was deleted");
                 System.out.println(removeById(id));
-                userInterface();
+                consoleUserInterface();
                 break;
             case 8:
 
-                userInterface();
+                consoleUserInterface();
                 break;
             case 9:
 
-                userInterface();
+                consoleUserInterface();
                 break;
             case 0:   //EXIT
                 break;
             default:
-                userInterface();
+                consoleUserInterface();
 
         }
     }
