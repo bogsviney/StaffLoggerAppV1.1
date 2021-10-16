@@ -1,42 +1,98 @@
 public class Test {
-    public static void main(String[] args) {
 
-        Employee grishaWorker = new Employee(1212, "GRISHA", 33, 1200.0, 100, 2.5, "M");
-        Employee lyoshaWorker = new Employee(6617, "LYOSHA", 21, 955.0, 56, 1.00, "M");
-        Employee romaWorker = new Employee(2314, "ROMA", 22, 945.8, 45, 0.88, "M");
-        Employee yaraWorker = new Employee(5432, "YARA", 25, 1145.8, 88, 1.88, "F");
+    EmployeeService service = new EmployeeService();
 
-        EmployeeService service = new EmployeeService(); //создаю свой отдел кадров
+    public Test() {
+        testRandomEmployeesSpawning();
+        testManualEmployeeAdding();
+        testPrintAllDatabase();
+        testSearchById();
+        testSearchByName();
+        testCalculateSalaryAndBonus();
+        testRemoveById();
+        testSortByName();
+        testSortByNameAndSalary();
+    }
 
-//        //ПРИЕМ НА РАБОТУ
-        service.addingToDatabase(grishaWorker); //вносим в базу работников
+    String ANSI_GREEN = "\u001B[32m";
+
+    void testRandomEmployeesSpawning() {
+        System.out.println(ANSI_GREEN+"================================================TEST================================================================");
+        System.out.println(ANSI_GREEN+"========================================RANDOM WORKERS CREATING=====================================================");
+        EmployeeFactory factory = new EmployeeFactory(); //ботоферма
+        Employee[] randomEmployees = factory.getRandomEmployees(5);
+        EmployeeService service = new EmployeeService(randomEmployees);
+        service.printEmployeesBase();
+    }
+
+    void testManualEmployeeAdding() {
+        System.out.println(ANSI_GREEN+"================================================TEST================================================================");
+        System.out.println(ANSI_GREEN+"======================================== MANUAL WORKERS ADDING =====================================================");
+
+        Employee grishaWorker = new Employee(1212, "Grisha", 33, 1200.0, 100, 2.5, "M");
+        Employee lyoshaWorker = new Employee(6617, "Lyosha", 21, 955.0, 56, 1.00, "M");
+        Employee roma1Worker = new Employee(2314, "Roma", 22, 945.8, 45, 0.88, "M");
+        Employee romaWorker = new Employee(6666, "Roma", 77, 10000, 421212, 11, "M");
+        Employee yaraWorker = new Employee(5432, "Yaroslava", 25, 1145.8, 88, 1.88, "F");
+        service.addingToDatabase(grishaWorker);
         service.addingToDatabase(lyoshaWorker);
+        service.addingToDatabase(roma1Worker);
         service.addingToDatabase(romaWorker);
         service.addingToDatabase(yaraWorker);
-//
-//        //ИНФОРМАЦИЯ
-//        service.printEmployee(grishaWorker); //печать инфы отдельного работника
-//        service.printEmployeesBase(); //печать инфы всех работников фирмы
-//
-//
-//        //ПОИСК
-//        service.getById(6617);
-//        service.getById(2313);// (Такого в базе нет,должно выводить сообщение что нет такого)
-//        service.getByName("ROMA");
-//        service.getByName("ANTON"); // (Такого в базе нет,должно выводить сообщение что нет такого)
-//
-//
-//        //ФИНАНСЫ
-//        service.calculateSalaryAndBonus(); // просчет зарплатного фонда компании, бонусы и ставка
-
-
-
-        //ЧИСТО ПО ФАНУ СКРУТИТЬ ЧТОБ МОЖНО БЫЛО УПРАВЛЯТЬ С КОНСОЛИ
-//        service.userInterface();
-//    команды в консоли цифрами
-//    1)  нанять          2)  напечатать инфу      3)   печать всей базы       4) ФИНАНСЫ       5) Поиск по имени
-//    6) поиск по АйДи    7)                       8)                          9)               0) EXIT program
-
-
     }
+
+    void testPrintAllDatabase() {
+        System.out.println(ANSI_GREEN+"================================================TEST================================================================");
+        System.out.println(ANSI_GREEN+"=======================================  DATABASE PRINTING  ========================================================");
+        service.printEmployeesBase();
+    }
+
+    void testSearchById() {
+        System.out.println(ANSI_GREEN+"================================================TEST================================================================");
+        System.out.println(ANSI_GREEN+"=======================================    SEARCHING BY ID   =======================================================");
+        service.printEmployee(service.getById(5432));
+    }
+
+    void testSearchByName() {
+        System.out.println(ANSI_GREEN+"================================================TEST================================================================");
+        System.out.println(ANSI_GREEN+"=======================================   SEARCHING BY NAME   ======================================================");
+        for (Employee employee : service.getByName("Roma")) {
+            System.out.println(employee);
+        }
+
+        service.getByName("Gooch Brown");
+    }
+
+    void testCalculateSalaryAndBonus() {
+        System.out.println(ANSI_GREEN+"================================================TEST================================================================");
+        System.out.println(ANSI_GREEN+"=========================================    SALARY FUND   =========================================================");
+        service.calculateSalaryAndBonus();
+    }
+
+    void testRemoveById() {
+        System.out.println(ANSI_GREEN+"================================================TEST================================================================");
+        System.out.println(ANSI_GREEN+"=======================================    REMOVING BY ID    =======================================================");
+        service.removeById(6666);
+    }
+
+    void testSortByName() {
+        System.out.println(ANSI_GREEN+"================================================TEST================================================================");
+        System.out.println(ANSI_GREEN+"======================================   SORTING BY THE NAME   =====================================================");
+        service.sortByName();
+        service.printEmployeesBase();
+    }
+
+    void testSortByNameAndSalary() {
+        System.out.println(ANSI_GREEN+"================================================TEST================================================================");
+        System.out.println(ANSI_GREEN+"=================================   SORTING BY THE NAME AND SALARY  ================================================");
+        service.sortByNameAndSalary();
+        service.printEmployeesBase();
+    }
+
+
+//    void testEditEmployeeParameters(){
+//        service.edit(grishaWorker);
+//
+//    }
+
 }
