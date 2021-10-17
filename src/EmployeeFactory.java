@@ -29,31 +29,66 @@ public class EmployeeFactory {
             "FEEMALE"
     };
 
+    private final static String[] POSITION = {
+            "DESIGNER",
+            "MANAGER",
+            "DEVELOPER"
+    };
+
     private final static int AGE_LOWER_BOUND = 21;
     private final static int AGE_UPPER_BOUND = 65;
     private final static int SALARY_LOWER_BOUND = 700;
-    private final static int SALARY_UPPER_BOUND = 1000;
+    private final static int SALARY_UPPER_BOUND = 10000;
+
+    Random random = new Random();
 
     Employee[] getRandomEmployees(int size) {
-        Random random = new Random();
         Employee[] randomEmployees = new Employee[size];
         for (int i = 0; i < size; i++) {
-            Employee employee = new Employee();
-            employee.setId(i + 1);
-            employee.setAge(random.nextInt(AGE_UPPER_BOUND) + AGE_LOWER_BOUND);
-            employee.setSalary(new BigDecimal(random.nextDouble() * SALARY_UPPER_BOUND + SALARY_LOWER_BOUND).setScale(2, RoundingMode.HALF_UP).doubleValue());
-            employee.setFixedBugs(random.nextInt(500) + 1);
-            employee.setDefaultBugRate(new BigDecimal(random.nextDouble() * 1 + 25).setScale(2, RoundingMode.HALF_UP).doubleValue());
-            employee.setGender(GENDER[random.nextInt(GENDER.length)]);
-            if (employee.getGender().equals("MALE")) {
-                employee.setName(MALE_NAMES[random.nextInt(MALE_NAMES.length)]);
-            } else {
-                employee.setName(FEMALE_NAMES[random.nextInt(FEMALE_NAMES.length)]);
+            long id = i + 1;
+            int age = random.nextInt(AGE_UPPER_BOUND - AGE_LOWER_BOUND) + AGE_LOWER_BOUND;
+            double salary = new BigDecimal(random.nextDouble() * SALARY_UPPER_BOUND + SALARY_LOWER_BOUND).setScale(2, RoundingMode.HALF_UP).doubleValue();
+            int fixedBugs = random.nextInt(500) + 1;
+            double rate = new BigDecimal(random.nextDouble() * 1 + 25).setScale(2, RoundingMode.HALF_UP).doubleValue();
+            String gender = GENDER[random.nextInt(GENDER.length)];
+            int workedDays = random.nextInt(23);
+            String name = gender.equals("MALE") ? MALE_NAMES[random.nextInt(MALE_NAMES.length)] : FEMALE_NAMES[random.nextInt(FEMALE_NAMES.length)];
+            String spawnRandomPosition = POSITION[random.nextInt(POSITION.length)];
+            switch (spawnRandomPosition) {
+                case "MANAGER":
+                    randomEmployees[i] = new Manager(id, name, age, salary, gender);
+                    break;
+                case "DESIGNER":
+                    randomEmployees[i] = new Designer(id, name, age, salary, gender, rate, workedDays);
+                    break;
+                case "DEVELOPER":
+                    randomEmployees[i] = new Developer(id, name, age, salary, gender, fixedBugs);
+                    break;
             }
-            randomEmployees[i] = employee;
         }
         return randomEmployees;
     }
+
+
+    Employee[] getDefaultEmployees() {
+
+        Employee grishaWorker = new Employee(1212, "Grisha", 33, 1200.0, 100, 2.5, "M");
+        Employee lyoshaWorker = new Employee(6617, "Lyosha", 21, 955.0, 56, 1.00, "M");
+        Employee roma1Worker = new Employee(2314, "Roma", 22, 945.8, 45, 0.88, "M");
+        Employee romaWorker = new Employee(6666, "Roma", 77, 10000, 421212, 11, "M");
+        Employee yaraWorker = new Employee(5432, "Yaroslava", 25, 1145.8, 88, 1.88, "F");
+
+        Employee[] defaultEmployees = new Employee[5];
+        defaultEmployees[0] = grishaWorker;
+        defaultEmployees[1] = roma1Worker;
+        defaultEmployees[2] = romaWorker;
+        defaultEmployees[3] = yaraWorker;
+        defaultEmployees[4] = lyoshaWorker;
+
+        return defaultEmployees;
+
+    }
+
 }
 
 

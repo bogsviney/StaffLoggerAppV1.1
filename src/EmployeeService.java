@@ -14,37 +14,29 @@ public class EmployeeService {
     }
 
     int employeesCounter = 0;
-    final int numberOfEmployees = 5; //максимальное количество рабочих мест в компании
+    final int numberOfEmployees = 0; //максимальное количество рабочих мест в компании
     Employee[] employees = new Employee[numberOfEmployees];
 
-    void printEmployee(Employee employee) {
-        System.out.println(PURPLE + "======================================   WARNING: EMPLOYEE INFO is printing:   =====================================");
-        System.out.println(PURPLE + "------------------------------------");
-        System.out.print(PURPLE + "This is the worker! ");
-        System.out.println();
-        System.out.println(PURPLE + "id = " + employee.getId());
-        System.out.print(PURPLE + "age = " + employee.getAge());
-        System.out.print(PURPLE + ", name = " + employee.getName());
-        System.out.print(PURPLE + ", gender: = " + employee.getGender() + ", ");
-        System.out.println();
-        System.out.print(PURPLE + "$ = " + employee.getSalary() + ",");
-        System.out.println();
-        System.out.print(PURPLE + "Bugs fixed: " + employee.getFixedBugs());
-        System.out.print(PURPLE + ", Bug Rate: " + employee.getDefaultBugRate() + " $");
-        System.out.println();
-        System.out.println(PURPLE + "------------------------------------");
+    void print(Employee employee) {
+        System.out.println(employee);
     }
 
     void printEmployeesBase() {
         System.out.println(PURPLE + "======================================   WARNING:  database is printing:   =========================================");
         for (int i = 0; i < employees.length; i++) {
-            printEmployee(employees[i]);
+            print(employees[i]);
         }
     }
 
-    void addingToDatabase(Employee employee) {
-        employees[employeesCounter] = employee;
-        employeesCounter++;
+    void add(Employee employee) {
+        if (employee != null) {
+            Employee[] arrayTemporary = new Employee[employees.length + 1];
+            for (int i = 0; i < employees.length; i++) {
+                arrayTemporary[i] = employees[i];
+            }
+            arrayTemporary[arrayTemporary.length - 1] = employee;
+            employees = arrayTemporary;
+        }
         System.out.println(PURPLE + "======================================   WARNING: EMPLOYEE " + employee.getName() + " data added =========================================");
     }
 
@@ -62,6 +54,7 @@ public class EmployeeService {
     }
 
     Employee[] getByName(String name) {
+        System.out.println(PURPLE + "=================================   WARNING: SEARCHING by NAME: " + name + "   ======================================");
         if (name == null) {
             return null;
         }
@@ -95,7 +88,7 @@ public class EmployeeService {
         if (updatedEmployee == null) {
             return null;
         }
-        updatedEmployee.setName(employee.getName());
+        updatedEmployee.setName(employee.getName()); //СВЯТЫЕ УГОДНИКИ, ВСЕ ОДИНАКОВЫЕ СТРОЧКИ ПЕРЕДЛАТЬ НАДО ИДИ СПИ Б"ТЬ
         updatedEmployee.setName(employee.getName());
         updatedEmployee.setName(employee.getName());
         updatedEmployee.setName(employee.getName());
@@ -118,8 +111,7 @@ public class EmployeeService {
         }
         Employee[] newEmployeesArray = new Employee[employees.length - 1];
         int newArrayCounter = 0;
-        for (int i = 0; i < employees.length; i++) { // i = 2, indexToRemove = 2
-            // newArrayCounter = 1;
+        for (int i = 0; i < employees.length; i++) {
             if (i != indexToRemove) {
                 newEmployeesArray[newArrayCounter] = employees[i];
                 newArrayCounter++;
@@ -130,7 +122,6 @@ public class EmployeeService {
         System.out.println(PURPLE + "======================================   WARNING: EMPLOYEE " + id + " data removed =======================================");
         return removedEmployee;
     }
-
 
     Employee[] sortByName() {
         Arrays.sort(employees, Comparator.comparing(Employee::getName));
@@ -145,7 +136,7 @@ public class EmployeeService {
     double calculateSalaryAndBonus() {
         double companyTotalSalaryAmount = 0;
         for (int i = 0; i < employees.length; i++) {
-            companyTotalSalaryAmount += employees[i].getFixedBugs() * employees[i].getDefaultBugRate() + employees[i].getSalary();
+            companyTotalSalaryAmount += employees[i].calculateSalary();
         }
         System.out.println(PURPLE + "======================================== TOTAL SALARY AMOUNT IS: " + companyTotalSalaryAmount + " $ ===============================");
         return companyTotalSalaryAmount;
