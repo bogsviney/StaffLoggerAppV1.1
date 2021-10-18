@@ -7,15 +7,27 @@ public class Test {
         testDefaultEmployeesAdding();
         testRandomEmployeesSpawning();
         testPrintAllDatabase();
-        testSearchById();
         testSearchByName();
+        testSearchById();
         testCalculateSalaryAndBonus();
         testRemoveById();
         testSortByName();
         testSortByNameAndSalary();
+        testEditInfo();
+
     }
 
     String ANSI_GREEN = "\u001B[32m";
+
+    void testEditInfo() {
+        System.out.println(ANSI_GREEN + "================================================TEST================================================================");
+        System.out.println(ANSI_GREEN + "========================================   EDIT PROFILE INFO   =====================================================");
+        Manager newUpdatedLyosha = new Manager(1, "ALEXEY", 29, 5000.0, "M");
+
+        service.print(service.edit(newUpdatedLyosha));
+        System.out.println(ANSI_GREEN + "=======================================   UPDATED INFO:   ==========================================================");
+        System.out.println(service.getById(newUpdatedLyosha.getId()));;
+    }
 
     void testRandomEmployeesSpawning() {
         System.out.println(ANSI_GREEN + "================================================TEST================================================================");
@@ -39,17 +51,18 @@ public class Test {
         System.out.println(ANSI_GREEN + "================================================TEST================================================================");
         System.out.println(ANSI_GREEN + "====================================== MANUAL WORKERS SPAWNING =====================================================");
         EmployeeFactory factory = new EmployeeFactory();
-        Developer mishaWorker = new Developer(1212, "Misha", 33, 1200.0, "M", 250);
-        Manager lyoshaWorker = new Manager(6617, "Lyosha", 21, 955.0, "M");
-        Designer roma1Worker = new Designer(2314, "Roma", 22, 945.8, "M", 0.88, 22);
-        Employee romaWorker = new Employee(6666, "Roma", 77, 10000, 421212, 11, "M");
-        Employee yaraWorker = new Employee(5432, "Yaroslava", 25, 1145.8, 88, 1.88, "F");
+        Developer mishaWorker = new Developer(1, "Misha", 33, 1200.0, "M", 250);
+        Employee lyoshaWorker = new Employee(2, "Lyosha", 21, 955.0, "M");
+        Designer roma1Worker = new Designer(3, "Roma", 22, 945.8, "M", 0.88, 22);
+        Manager romaWorker = new Manager(4, "Roma", 77, 1000.0, "M");
+        Employee yaraWorker = new Employee(5, "Yaroslava", 25, 1145.8, 88, 1.88, "F");
 
+        service.add(mishaWorker);
         service.add(lyoshaWorker);
         service.add(roma1Worker);
         service.add(romaWorker);
         service.add(yaraWorker);
-        service.add(mishaWorker);
+
 
         service.printEmployeesBase();
 
@@ -65,7 +78,7 @@ public class Test {
     void testSearchById() {
         System.out.println(ANSI_GREEN + "================================================TEST================================================================");
         System.out.println(ANSI_GREEN + "=======================================    SEARCHING BY ID   =======================================================");
-        service.print(service.getById(5432));
+        service.print(service.getById(1));
     }
 
     void testSearchByName() {

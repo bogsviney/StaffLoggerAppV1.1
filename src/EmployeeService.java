@@ -80,22 +80,18 @@ public class EmployeeService {
         return temporary;
     }
 
-    Employee edit(Employee employee) {
-        if (employee == null) {
-            return null;
+
+    Employee edit(Employee employeeWithNewData) {
+        System.out.println(PURPLE + "=================================   WARNING: EDITING PROFILE   =====================================================");
+        Employee employeeOld = getById(employeeWithNewData.getId());
+
+        for (int i = 0; i < employees.length; i++) {
+            if (employeeOld.getId() == employees[i].getId()) {
+                employees[i] = employeeWithNewData;
+            }
         }
-        Employee updatedEmployee = getById(employee.getId());
-        if (updatedEmployee == null) {
-            return null;
-        }
-        updatedEmployee.setName(employee.getName()); //СВЯТЫЕ УГОДНИКИ, ВСЕ ОДИНАКОВЫЕ СТРОЧКИ ПЕРЕДЛАТЬ НАДО ИДИ СПИ Б"ТЬ
-        updatedEmployee.setName(employee.getName());
-        updatedEmployee.setName(employee.getName());
-        updatedEmployee.setName(employee.getName());
-        updatedEmployee.setName(employee.getName());
-        updatedEmployee.setName(employee.getName());
-        return employee;
-    }
+        return employeeOld;
+     }
 
     Employee removeById(long id) {
         int indexToRemove = -1;
