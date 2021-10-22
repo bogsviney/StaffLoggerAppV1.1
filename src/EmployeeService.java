@@ -91,7 +91,7 @@ public class EmployeeService {
             }
         }
         return employeeOld;
-     }
+    }
 
     Employee removeById(long id) {
         int indexToRemove = -1;
@@ -144,64 +144,5 @@ public class EmployeeService {
         return "Napalm Death";
     }
 
-    //just for fun ^^
-    void consoleUserInterface() {
-        System.out.println();
-        System.out.println();
-        System.out.println("==============================PRESS THE NUMBERS ON KEYBOARD TO FOLLOW THE COMMANDS===============================================");
-        System.out.println("=====1 to HIRE  =====2 to PRINT info   =====3 to print all DATABASE  =====4 to CALCULATE TOTAL SALARY  =====5 to search by NAME  ");
-        System.out.println("=====6 to search by ID    =====7 to        =====8 to        =====9 to      =====0 to EXIT program ===============================");
-        Scanner scanner = new Scanner(System.in);
-        int numberFromUser = scanner.nextInt();
-        switch (numberFromUser) {
-            case 1:
-//                       addingToDatabase(пока хз как это );
-                consoleUserInterface();
-                break;
-            case 2:
-//                        printEmployee(пока хз как это);
-                consoleUserInterface();
-                break;
-            case 3:
-                printEmployeesBase();
-                consoleUserInterface();
-                break;
-            case 4:
-                calculateSalaryAndBonus();
-                consoleUserInterface();
-                break;
-            case 5:    // НЕ СЧИТЫВАЕТ СТРОЧКУ
-//                        String name = scanner.nextLine();
-//                        System.out.println(ANSI_GREEN + "Enter the name and press ENTER to search");
-//                        getByName(name);
-//                        UserInterface();
-//                        break;
-            case 6:
-                System.out.println("Enter the ID number and press ENTER to search");
-                long id = scanner.nextInt();
-                getById(id);
-                consoleUserInterface();
-                break;
-            case 7:
-                System.out.println("Enter the ID number to delete from database");
-                id = scanner.nextLong();
-                System.out.println("Worker with ID " + id + " was deleted");
-                System.out.println(removeById(id));
-                consoleUserInterface();
-                break;
-            case 8:
-
-                consoleUserInterface();
-                break;
-            case 9:
-
-                consoleUserInterface();
-                break;
-            case 0:   //EXIT
-                break;
-            default:
-                consoleUserInterface();
-
-        }
-    }
 }
+

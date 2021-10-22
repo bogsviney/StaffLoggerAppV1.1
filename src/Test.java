@@ -55,7 +55,7 @@ public class Test {
         Employee lyoshaWorker = new Employee(2, "Lyosha", 21, 955.0, "M");
         Designer roma1Worker = new Designer(3, "Roma", 22, 945.8, "M", 0.88, 22);
         Manager romaWorker = new Manager(4, "Roma", 77, 1000.0, "M");
-        Employee yaraWorker = new Employee(5, "Yaroslava", 25, 1145.8, 88, 1.88, "F");
+        Employee yaraWorker = new Employee(5, "Yaroslava", 25, 1145.8, 88,  "F");
 
         service.add(mishaWorker);
         service.add(lyoshaWorker);
@@ -65,6 +65,7 @@ public class Test {
 
 
         service.printEmployeesBase();
+
 
     }
 

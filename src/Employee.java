@@ -6,19 +6,21 @@ public class Employee {
     private int age;
     private double salary;
     private String gender;
-    private double defaultBugRate;
+    int fixedBugs;
+
+
 
     Employee() {
         System.out.println(PURPLE + "================================= WARNING: EMPLOYEE spawning is started! ===========================================");
     }
 
-    Employee(long id, String name, int age, double salary, int fixedBugs, double defaultBugRate, String gender) {
+    Employee(long id, String name, int age, double salary, int fixedBugs,  String gender) {
         System.out.println(PURPLE + "================================= WARNING: EMPLOYEE spawning is started! ===========================================");
         this.id = id;
         this.name = name;
         this.age = age;
         this.salary = salary;
-        this.defaultBugRate = defaultBugRate;
+        this.fixedBugs = fixedBugs;
         this.gender = gender;
     }
 

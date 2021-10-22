@@ -72,11 +72,11 @@ public class EmployeeFactory {
 
     Employee[] getDefaultEmployees() {
 
-        Employee grishaWorker = new Employee(1212, "Grisha", 33, 1200.0, 100, 2.5, "M");
-        Employee lyoshaWorker = new Employee(6617, "Lyosha", 21, 955.0, 56, 1.00, "M");
-        Employee roma1Worker = new Employee(2314, "Roma", 22, 945.8, 45, 0.88, "M");
-        Employee romaWorker = new Employee(6666, "Roma", 77, 10000, 421212, 11, "M");
-        Employee yaraWorker = new Employee(5432, "Yaroslava", 25, 1145.8, 88, 1.88, "F");
+        Employee grishaWorker = new Employee(1212, "Grisha", 33, 1200.0, 100,  "M");
+        Employee lyoshaWorker = new Employee(6617, "Lyosha", 21, 955.0, 56,  "M");
+        Employee roma1Worker = new Employee(2314, "Roma", 22, 945.8, 45,  "M");
+        Employee romaWorker = new Employee(6666, "Roma", 77, 10000, 421212, "M");
+        Employee yaraWorker = new Employee(5432, "Yaroslava", 25, 1145.8, 88,  "F");
 
         Employee[] defaultEmployees = new Employee[5];
         defaultEmployees[0] = grishaWorker;
