@@ -1,19 +1,24 @@
+package tests;
+import entities.*;
+import services.*;
+
+
 public class Test {
 
     EmployeeService service = new EmployeeService();
 
     public Test() {
-        testManualEmployeesAdding();
-        testDefaultEmployeesAdding();
-        testRandomEmployeesSpawning();
-        testPrintAllDatabase();
-        testSearchByName();
-        testSearchById();
-        testCalculateSalaryAndBonus();
-        testRemoveById();
-        testSortByName();
-        testSortByNameAndSalary();
-        testEditInfo();
+//        testManualEmployeesAdding();
+//        testDefaultEmployeesAdding();
+//        testRandomEmployeesSpawning();
+//        testPrintAllDatabase();
+//        testSearchByName();
+//        testSearchById();
+//        testCalculateSalaryAndBonus();
+//        testRemoveById();
+//        testSortByName();
+//        testSortByNameAndSalary();
+//        testEditInfo();
 
     }
 
@@ -29,7 +34,7 @@ public class Test {
         System.out.println(service.getById(newUpdatedLyosha.getId()));;
     }
 
-    void testRandomEmployeesSpawning() {
+    public void testRandomEmployeesSpawning() {
         System.out.println(ANSI_GREEN + "================================================TEST================================================================");
         System.out.println(ANSI_GREEN + "========================================RANDOM WORKERS CREATING=====================================================");
         EmployeeFactory factory = new EmployeeFactory(); //ботоферма
@@ -38,7 +43,7 @@ public class Test {
         service.printEmployeesBase();
     }
 
-    void testDefaultEmployeesAdding() {
+    public void testDefaultEmployeesAdding() {
         System.out.println(ANSI_GREEN + "================================================TEST================================================================");
         System.out.println(ANSI_GREEN + "======================================== DEFAULT WORKERS ADDING =====================================================");
         EmployeeFactory factory = new EmployeeFactory();
@@ -70,7 +75,7 @@ public class Test {
     }
 
 
-    void testPrintAllDatabase() {
+    public void testPrintAllDatabase() {
         System.out.println(ANSI_GREEN + "================================================TEST================================================================");
         System.out.println(ANSI_GREEN + "=======================================  DATABASE PRINTING  ========================================================");
         service.printEmployeesBase();
@@ -92,19 +97,19 @@ public class Test {
         service.getByName("Gooch Brown");
     }
 
-    void testCalculateSalaryAndBonus() {
+    public void testCalculateSalaryAndBonus() {
         System.out.println(ANSI_GREEN + "================================================TEST================================================================");
         System.out.println(ANSI_GREEN + "=========================================    SALARY FUND   =========================================================");
         service.calculateSalaryAndBonus();
     }
 
-    void testRemoveById() {
+    public void testRemoveById() {
         System.out.println(ANSI_GREEN + "================================================TEST================================================================");
         System.out.println(ANSI_GREEN + "=======================================    REMOVING BY ID    =======================================================");
         service.removeById(6666);
     }
 
-    void testSortByName() {
+    public void testSortByName() {
         System.out.println(ANSI_GREEN + "================================================TEST================================================================");
         System.out.println(ANSI_GREEN + "======================================   SORTING BY THE NAME   =====================================================");
         service.sortByName();

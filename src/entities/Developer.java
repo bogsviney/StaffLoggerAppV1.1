@@ -1,3 +1,7 @@
+package entities;
+
+import entities.Employee;
+
 import java.util.*;
 
 public class Developer extends Employee {

@@ -1,6 +1,10 @@
-public class Manager extends Employee{
+package entities;
 
-    Manager (long id,String name,int age,double salary,String gender){
+import entities.Employee;
+
+public class Manager extends Employee {
+
+    public Manager(long id, String name, int age, double salary, String gender){
         super(id, name, age, salary, gender);
 
     }

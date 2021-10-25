@@ -1,3 +1,5 @@
+package entities;
+
 public class Employee {
 
     String PURPLE = "\u001B[35m";
@@ -14,7 +16,7 @@ public class Employee {
         System.out.println(PURPLE + "================================= WARNING: EMPLOYEE spawning is started! ===========================================");
     }
 
-    Employee(long id, String name, int age, double salary, int fixedBugs,  String gender) {
+    public Employee(long id, String name, int age, double salary, int fixedBugs, String gender) {
         System.out.println(PURPLE + "================================= WARNING: EMPLOYEE spawning is started! ===========================================");
         this.id = id;
         this.name = name;

@@ -1,3 +1,7 @@
+package GUI;
+
+import tests.Test;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;

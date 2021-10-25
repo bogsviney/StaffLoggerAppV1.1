@@ -1,3 +1,5 @@
+package services;
+import entities.*;
 import java.util.*;
 
 public class EmployeeService {
@@ -17,18 +19,18 @@ public class EmployeeService {
     final int numberOfEmployees = 0; //максимальное количество рабочих мест в компании
     Employee[] employees = new Employee[numberOfEmployees];
 
-    void print(Employee employee) {
+    public void print(Employee employee) {
         System.out.println(employee);
     }
 
-    void printEmployeesBase() {
+    public void printEmployeesBase() {
         System.out.println(PURPLE + "======================================   WARNING:  database is printing:   =========================================");
         for (int i = 0; i < employees.length; i++) {
             print(employees[i]);
         }
     }
 
-    void add(Employee employee) {
+    public void add(Employee employee) {
         if (employee != null) {
             Employee[] arrayTemporary = new Employee[employees.length + 1];
             for (int i = 0; i < employees.length; i++) {
@@ -40,7 +42,7 @@ public class EmployeeService {
         System.out.println(PURPLE + "======================================   WARNING: EMPLOYEE " + employee.getName() + " data added =========================================");
     }
 
-    Employee getById(long iD) {
+    public Employee getById(long iD) {
         System.out.println(PURPLE + "======================================   WARNING: SEARCHING by ID: " + iD + "   ==========================================");
         for (Employee employee : employees) {
             if (employee != null && employee.getId() == iD) {
@@ -53,7 +55,7 @@ public class EmployeeService {
         return null;
     }
 
-    Employee[] getByName(String name) {
+    public Employee[] getByName(String name) {
         System.out.println(PURPLE + "=================================   WARNING: SEARCHING by NAME: " + name + "   ======================================");
         if (name == null) {
             return null;
@@ -81,7 +83,7 @@ public class EmployeeService {
     }
 
 
-    Employee edit(Employee employeeWithNewData) {
+    public Employee edit(Employee employeeWithNewData) {
         System.out.println(PURPLE + "=================================   WARNING: EDITING PROFILE   =====================================================");
         Employee employeeOld = getById(employeeWithNewData.getId());
 
@@ -93,7 +95,7 @@ public class EmployeeService {
         return employeeOld;
     }
 
-    Employee removeById(long id) {
+    public Employee removeById(long id) {
         int indexToRemove = -1;
         for (int i = 0; i < employees.length; i++) {
             Employee employee = employees[i];
@@ -119,17 +121,17 @@ public class EmployeeService {
         return removedEmployee;
     }
 
-    Employee[] sortByName() {
+    public Employee[] sortByName() {
         Arrays.sort(employees, Comparator.comparing(Employee::getName));
         return employees;
     }
 
-    Employee[] sortByNameAndSalary() {
+    public Employee[] sortByNameAndSalary() {
         Arrays.sort(employees, Comparator.comparing(Employee::getName).thenComparing(Employee::getSalary));
         return employees;
     }
 
-    double calculateSalaryAndBonus() {
+    public double calculateSalaryAndBonus() {
         double companyTotalSalaryAmount = 0;
         for (int i = 0; i < employees.length; i++) {
             companyTotalSalaryAmount += employees[i].calculateSalary();

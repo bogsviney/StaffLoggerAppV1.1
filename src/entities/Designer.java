@@ -1,8 +1,10 @@
+package entities;
+
 public class Designer extends Employee {
     private int workedDays;
     private double rate;
 
-    Designer(long id, String name, int age, double salary, String gender, double rate, int workedDays) {
+    public Designer(long id, String name, int age, double salary, String gender, double rate, int workedDays) {
         super(id, name, age, salary, gender);
         this.rate = rate;
         this.workedDays = workedDays;

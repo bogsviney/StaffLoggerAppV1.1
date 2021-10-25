@@ -1,3 +1,5 @@
+package services;
+import entities.*;
 import java.math.*;
 import java.util.*;
 
@@ -42,7 +44,7 @@ public class EmployeeFactory {
 
     Random random = new Random();
 
-    Employee[] getRandomEmployees(int size) {
+    public Employee[] getRandomEmployees(int size) {
         Employee[] randomEmployees = new Employee[size];
         for (int i = 0; i < size; i++) {
             long id = i + 1;
@@ -70,7 +72,7 @@ public class EmployeeFactory {
     }
 
 
-    Employee[] getDefaultEmployees() {
+    public Employee[] getDefaultEmployees() {
 
         Employee grishaWorker = new Employee(1212, "Grisha", 33, 1200.0, 100,  "M");
         Employee lyoshaWorker = new Employee(6617, "Lyosha", 21, 955.0, 56,  "M");
