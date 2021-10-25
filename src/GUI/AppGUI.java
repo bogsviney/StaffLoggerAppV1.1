@@ -1,5 +1,7 @@
 package GUI;
-
+import entities.Employee;
+import services.EmployeeFactory;
+import services.EmployeeService;
 import tests.Test;
 
 import java.awt.*;
@@ -7,23 +9,22 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class AppGUI extends JFrame {
-
+    Test test = new Test();
     private JButton button1 = new JButton("Calculate salary");
     private JButton button2 = new JButton("Random Workers Spawner");
     private JButton button3 = new JButton("Default Employees Adding");
     private JButton button4 = new JButton("Sort By Name");
     private JButton button5 = new JButton("Print Database");
     private JButton button6 = new JButton("Remove By ID");
-    private JButton button7 = new JButton("coming SOON");
-    private JButton button8 = new JButton("coming SOON");
+    private JButton button7 = new JButton("Workers Adding");
+    private JButton button8 = new JButton("Edit Workers INFO");
     private JButton button9 = new JButton("coming SOON");
-    private JButton button10 = new JButton("coming SOON");
+    private JButton button10 = new JButton("Coming SOON");
     private JLabel label = new JLabel("                INTERFACE VER 0,7");
-
     private JTextField input = new JTextField(" ", 5);
 
     public AppGUI() {
-        super("Staff Logger App V1.0 beta");
+        super("Staff Logger App V1.1");
         this.setBounds(300, 300, 800, 200);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Container container = this.getContentPane();
@@ -62,16 +63,13 @@ public class AppGUI extends JFrame {
         this.button8.addActionListener(new AppGUI.ButtonEventListener());
         this.button9.addActionListener(new AppGUI.ButtonEventListener());
         this.button10.addActionListener(new AppGUI.ButtonEventListener());
-
-
-
     }
 
     class ButtonEventListener implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
 
-            Test test = new Test();
+
             if (e.getSource() == button1) {
                 test.testCalculateSalaryAndBonus();
             } else if (e.getSource() == button2) {
@@ -85,12 +83,12 @@ public class AppGUI extends JFrame {
             } else if (e.getSource() == button6) {
                 test.testRemoveById();
             } else if (e.getSource() == button7) {
-
+                test.testManualEmployeesAdding();
             } else if (e.getSource() == button8) {
-
-            } else if (e.getSource() == button9) {
-
-            } else if (e.getSource() == button10) {
+                test.testEditInfo();
+//            } else if (e.getSource() == button9) {
+//
+//            } else if (e.getSource() == button10) {
 
             }
         }

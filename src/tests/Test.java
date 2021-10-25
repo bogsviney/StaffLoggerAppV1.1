@@ -19,28 +19,29 @@ public class Test {
 //        testSortByName();
 //        testSortByNameAndSalary();
 //        testEditInfo();
+//        testPrintAllDatabase();
 
     }
 
     String ANSI_GREEN = "\u001B[32m";
 
-    void testEditInfo() {
+    public void testEditInfo() {
+
         System.out.println(ANSI_GREEN + "================================================TEST================================================================");
         System.out.println(ANSI_GREEN + "========================================   EDIT PROFILE INFO   =====================================================");
-        Manager newUpdatedLyosha = new Manager(1, "ALEXEY", 29, 5000.0, "M");
-
+        Manager newUpdatedLyosha = new Manager(2, "ALEXEY", 29, 5000.0, "M");
         service.print(service.edit(newUpdatedLyosha));
         System.out.println(ANSI_GREEN + "=======================================   UPDATED INFO:   ==========================================================");
         System.out.println(service.getById(newUpdatedLyosha.getId()));;
     }
 
     public void testRandomEmployeesSpawning() {
-        System.out.println(ANSI_GREEN + "================================================TEST================================================================");
-        System.out.println(ANSI_GREEN + "========================================RANDOM WORKERS CREATING=====================================================");
-        EmployeeFactory factory = new EmployeeFactory(); //ботоферма
+        System.out.println(ANSI_GREEN+"================================================TEST================================================================");
+        System.out.println(ANSI_GREEN+"========================================RANDOM WORKERS CREATING=====================================================");
+        EmployeeFactory factory = new EmployeeFactory();
         Employee[] randomEmployees = factory.getRandomEmployees(10);
         EmployeeService service = new EmployeeService(randomEmployees);
-        service.printEmployeesBase();
+//        service.printEmployeesBase();
     }
 
     public void testDefaultEmployeesAdding() {
@@ -49,13 +50,12 @@ public class Test {
         EmployeeFactory factory = new EmployeeFactory();
         Employee[] defaultEmployees = factory.getDefaultEmployees();
         EmployeeService service = new EmployeeService(defaultEmployees);
-        service.printEmployeesBase();
+//        service.printEmployeesBase();
     }
 
-    void testManualEmployeesAdding() {
+    public void testManualEmployeesAdding() {
         System.out.println(ANSI_GREEN + "================================================TEST================================================================");
         System.out.println(ANSI_GREEN + "====================================== MANUAL WORKERS SPAWNING =====================================================");
-        EmployeeFactory factory = new EmployeeFactory();
         Developer mishaWorker = new Developer(1, "Misha", 33, 1200.0, "M", 250);
         Employee lyoshaWorker = new Employee(2, "Lyosha", 21, 955.0, "M");
         Designer roma1Worker = new Designer(3, "Roma", 22, 945.8, "M", 0.88, 22);
@@ -68,10 +68,7 @@ public class Test {
         service.add(romaWorker);
         service.add(yaraWorker);
 
-
-        service.printEmployeesBase();
-
-
+//        service.printEmployeesBase();
     }
 
 
@@ -81,13 +78,14 @@ public class Test {
         service.printEmployeesBase();
     }
 
-    void testSearchById() {
+    public void testSearchById() {
         System.out.println(ANSI_GREEN + "================================================TEST================================================================");
         System.out.println(ANSI_GREEN + "=======================================    SEARCHING BY ID   =======================================================");
         service.print(service.getById(1));
+        service.print(service.getById(88));
     }
 
-    void testSearchByName() {
+    public void testSearchByName() {
         System.out.println(ANSI_GREEN + "================================================TEST================================================================");
         System.out.println(ANSI_GREEN + "=======================================   SEARCHING BY NAME   ======================================================");
         for (Employee employee : service.getByName("Roma")) {
@@ -106,21 +104,21 @@ public class Test {
     public void testRemoveById() {
         System.out.println(ANSI_GREEN + "================================================TEST================================================================");
         System.out.println(ANSI_GREEN + "=======================================    REMOVING BY ID    =======================================================");
-        service.removeById(6666);
+        System.out.println(service.removeById(4));
     }
 
     public void testSortByName() {
         System.out.println(ANSI_GREEN + "================================================TEST================================================================");
         System.out.println(ANSI_GREEN + "======================================   SORTING BY THE NAME   =====================================================");
         service.sortByName();
-        service.printEmployeesBase();
+//        service.printEmployeesBase();
     }
 
-    void testSortByNameAndSalary() {
+    public void testSortByNameAndSalary() {
         System.out.println(ANSI_GREEN + "================================================TEST================================================================");
         System.out.println(ANSI_GREEN + "=================================   SORTING BY THE NAME AND SALARY  ================================================");
         service.sortByNameAndSalary();
-        service.printEmployeesBase();
+//        service.printEmployeesBase();
     }
 
 }

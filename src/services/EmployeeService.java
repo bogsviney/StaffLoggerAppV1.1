@@ -1,5 +1,7 @@
 package services;
+
 import entities.*;
+
 import java.util.*;
 
 public class EmployeeService {
@@ -50,8 +52,7 @@ public class EmployeeService {
             }
 
         }
-        System.out.println(PURPLE + "======================================   WARNING: SEARCHING by ID: " + iD + "   ==============================================");
-        System.out.println(RED + "OOOOOOOPS! we have no ID " + iD + " in our data base");
+        System.out.println(RED + "====================================OOOOOOOPS! we have no ID " + iD + " in our data base==================================");
         return null;
     }
 
@@ -67,7 +68,6 @@ public class EmployeeService {
             }
         }
         if (isMatch == 0) {
-            System.out.println(PURPLE + "=================================   WARNING: SEARCHING by NAME: " + name + "   ======================================");
             System.out.println(RED + "====================================   OOOOOOOPS! we have no name " + name + " in our data base  ====================");
             return null;
         }
@@ -86,7 +86,6 @@ public class EmployeeService {
     public Employee edit(Employee employeeWithNewData) {
         System.out.println(PURPLE + "=================================   WARNING: EDITING PROFILE   =====================================================");
         Employee employeeOld = getById(employeeWithNewData.getId());
-
         for (int i = 0; i < employees.length; i++) {
             if (employeeOld.getId() == employees[i].getId()) {
                 employees[i] = employeeWithNewData;
