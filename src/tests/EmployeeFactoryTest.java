@@ -1,13 +1,9 @@
 package tests;
 import entities.*;
-import org.junit.Assert;
+import org.junit.*;
 import org.junit.jupiter.api.Test;
-class EmployeeFactoryTest {
 
-    @Test
-    void getRandomEmployees() {
-        //очень хз как его делать...
-    }
+class EmployeeFactoryTest {
 
     @Test
     void getDefaultEmployees() {
@@ -25,4 +21,10 @@ class EmployeeFactoryTest {
         Employee[] expected = {grishaWorker, roma1Worker, romaWorker, yaraWorker, lyoshaWorker};
         Assert.assertArrayEquals(expected, actual);
     }
+
+    @Test
+    void getRandomEmployees() {
+        //очень хз как его делать...
+    }
+
 }

@@ -8,6 +8,7 @@
 <artifactId>StaffLoggerApp</artifactId>
 <version>1.1</version>
     <properties>
+        <junit.ver>4.12</junit.ver>
         <maven.compiler.source>15</maven.compiler.source>
         <maven.compiler.target>15</maven.compiler.target>
     </properties>

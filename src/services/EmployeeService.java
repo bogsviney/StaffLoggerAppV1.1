@@ -19,7 +19,7 @@ public class EmployeeService {
 
     int employeesCounter = 0;
     final int numberOfEmployees = 0; //максимальное количество рабочих мест в компании
-    Employee[] employees = new Employee[numberOfEmployees];
+    public Employee[] employees = new Employee[numberOfEmployees];
 
     public void print(Employee employee) {
         System.out.println(employee);
